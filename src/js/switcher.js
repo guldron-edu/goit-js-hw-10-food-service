@@ -16,12 +16,14 @@ if (savedTheme === null || savedTheme === Theme.LIGHT) {
 
 switcherRef.addEventListener('change', ev => {
   if (ev.target.checked) {
-    bodyRef.classList.remove(Theme.LIGHT);
-    bodyRef.classList.add(Theme.DARK);
-    localStorage.setItem('theme', Theme.DARK);
+    changeTheme(Theme.LIGHT, Theme.DARK);
   } else {
-    bodyRef.classList.remove(Theme.DARK);
-    bodyRef.classList.add(Theme.LIGHT);
-    localStorage.setItem('theme', Theme.LIGHT);
+    changeTheme(Theme.DARK, Theme.LIGHT);
   }
 });
+
+function changeTheme(firstTheme, secondTheme) {
+  bodyRef.classList.remove(firstTheme);
+  bodyRef.classList.add(secondTheme);
+  localStorage.setItem('theme', secondTheme);
+}
